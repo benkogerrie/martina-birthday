@@ -1,19 +1,19 @@
 
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="cs">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Martina's Verjaardag 🎉</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Všechno nejlepší, Martina! ❤️</title>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom right, #ffb3ec, #ffe6cc);
       text-align: center;
-      padding: 40px;
+      padding: 20px;
     }
     h1 {
-      font-size: 3em;
+      font-size: 2.2em;
       color: #d6336c;
     }
     .card {
@@ -33,7 +33,7 @@
       text-decoration: none;
       font-weight: bold;
       border-radius: 8px;
-      font-size: 1.2em;
+      font-size: 1em;
       cursor: pointer;
     }
     .button:hover {
@@ -48,9 +48,77 @@
       display: none;
     }
   </style>
+
+<style>
+  .hearts span {
+    position: relative;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+    font-size: 2em;
+    margin: 0 5px;
+  }
+  .hearts span:nth-child(1) { animation-delay: 0s; }
+  .hearts span:nth-child(2) { animation-delay: 1s; }
+  .hearts span:nth-child(3) { animation-delay: 2s; }
+
+  @keyframes float {
+    0% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(-20px); opacity: 0.7; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  #gift-icon:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+</style>
 </head>
 
 <body>
+
+  <div id="start-screen">
+    <h1>Martinko moje ❤️</h1>
+    <p>Klikni na tlačítko a začni svoje překvapení... 💌</p>
+    <button class="button" onclick="startSurprise()">✨ Spustit</button>
+  </div>
+
+  <div id="main-content">
+    <h1>Všechno nejlepší k narozeninám, lásko! 🎂🎉💖</h1>
+
+    <div class="card">
+      <p>Pro tvoje narozeniny mám něco výjimečného... 🎁</p>
+      <p>🎤 4 lístky na <strong>Boney M Live</strong>! 🕺💃</p>
+      <p style="font-size: 1.4em;">Miluju tě moc ❤️❤️❤️</p>
+      <img src="boneym.jpg" alt="Boney M Show Poster">
+      <br>
+      
+<input type="password" id="pw" placeholder="Zadej heslo" />
+<button onclick="checkPass()" class="button">🔓 Odemkni vstupenky</button>
+<div id="ticket-link" style="display:none;">
+  <a class="button" href="boney_m_tickets.pdf" download>🎟️ Stáhni si vstupenky</a>
+</div>
+
+    
+    </div>
+
+    <div style="margin-top: 40px;">
+      <span id="gift-icon" style="font-size: 2.2em; cursor: pointer;">🎁</span>
+    </div>
+    <div id="gift-message" style="display: none; margin-top: 20px;">
+      <p style="font-size: 1.5em; color: #d6336c;">
+        For Martina, the sweetest girl in the world ❤️❤️❤️
+      </p>
+      <div class="hearts">
+        <span>❤️</span><span>❤️</span><span>❤️</span>
+      </div>
+    </div>
+
+
+  <audio id="player" loop>
+    <source src="rasputin.mp3" type="audio/mpeg">
+    Tvůj prohlížeč nepodporuje přehrávání zvuku.
+  </audio>
+
   <style>
     body::before {
       content: "";
@@ -63,31 +131,20 @@
     }
   </style>
 
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js">
+  function checkPass() {
+    const correct = "Mallorca2025";
+    if (document.getElementById("pw").value === correct) {
+      document.getElementById("ticket-link").style.display = "block";
+    } else {
+      alert("Špatné heslo 😢");
+    }
+  }
 
-  <div id="start-screen">
-    <h1>Welkom Martina! 🎁</h1>
-    <p>Klik op de knop om je verrassing te starten...</p>
-    <button class="button" onclick="startSurprise()">✨ Start</button>
-  </div>
-
-  <div id="main-content">
-    <h1>Gefeliciteerd, Martina! 🎂🎉</h1>
-
-    <div class="card">
-      <p>Voor jouw verjaardag heb ik iets speciaals gepland...</p>
-      <p>🎤 4 kaartjes voor <strong>Boney M Live</strong>! 🕺💃</p>
-      <img src="boneym.jpg" alt="Boney M Show Poster">
-      <br>
-      <a class="button" href="boney_m_tickets.pdf" download>🎟️ Download je tickets</a>
-    </div>
-  </div>
-
-  <audio id="player" loop>
-    <source src="rasputin.mp3" type="audio/mpeg">
-    Je browser ondersteunt geen audio.
-  </audio>
-
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  document.getElementById('gift-icon').addEventListener('click', function() {
+    document.getElementById('gift-message').style.display = 'block';
+  });
+</script>
   <script>
     function startSurprise() {
       document.getElementById('start-screen').style.display = 'none';
@@ -96,7 +153,20 @@
       confetti();
       setInterval(() => confetti(), 3000);
     }
-  </script>
+  
+  function checkPass() {
+    const correct = "Mallorca2025";
+    if (document.getElementById("pw").value === correct) {
+      document.getElementById("ticket-link").style.display = "block";
+    } else {
+      alert("Špatné heslo 😢");
+    }
+  }
+
+  document.getElementById('gift-icon').addEventListener('click', function() {
+    document.getElementById('gift-message').style.display = 'block';
+  });
+</script>
 
 </body>
 </html>
