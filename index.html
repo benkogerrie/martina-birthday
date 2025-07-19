@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Martina's Verjaardag 🎉</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffb3ec, #ffe6cc);
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 3em;
+      color: #d6336c;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      display: inline-block;
+      margin-top: 30px;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 25px;
+      background-color: #ff69b4;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .button:hover {
+      background-color: #ff1493;
+    }
+    img {
+      max-width: 300px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+    #main-content {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <style>
+    body::before {
+      content: "";
+      background: url('background.gif') no-repeat center center fixed;
+      background-size: cover;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      opacity: 0.15;
+    }
+  </style>
+
+
+  <div id="start-screen">
+    <h1>Welkom Martina! 🎁</h1>
+    <p>Klik op de knop om je verrassing te starten...</p>
+    <button class="button" onclick="startSurprise()">✨ Start</button>
+  </div>
+
+  <div id="main-content">
+    <h1>Gefeliciteerd, Martina! 🎂🎉</h1>
+
+    <div class="card">
+      <p>Voor jouw verjaardag heb ik iets speciaals gepland...</p>
+      <p>🎤 4 kaartjes voor <strong>Boney M Live</strong>! 🕺💃</p>
+      <img src="boneym.jpg" alt="Boney M Show Poster">
+      <br>
+      <a class="button" href="boney_m_tickets.pdf" download>🎟️ Download je tickets</a>
+    </div>
+  </div>
+
+  <audio id="player" loop>
+    <source src="rasputin.mp3" type="audio/mpeg">
+    Je browser ondersteunt geen audio.
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script>
+    function startSurprise() {
+      document.getElementById('start-screen').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+      document.getElementById('player').play();
+      confetti();
+      setInterval(() => confetti(), 3000);
+    }
+  </script>
+
+</body>
+</html>
